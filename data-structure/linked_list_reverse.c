@@ -1,6 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
-typedef struct Node {
+typedef struct Node { //链表反转的核心算法（三个指针迭代）
 	int data;
 	struct Node* next;
 }Node;
@@ -12,7 +12,7 @@ Node* createNode(int data)
 	newNode->next = NULL;
 	return newNode;
 }
-void insertAtTail(Node**head,int  data){
+void insertAtTail(Node**head,int  data){//尾插法
 	Node* newNode = createNode(data);
 	if (!newNode) return;
 	if (*head == NULL) {
