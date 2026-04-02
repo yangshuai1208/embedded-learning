@@ -13,7 +13,7 @@ Node* createNode(int data) {
 	return newNode;
 }
 //尾插法
-void insertAtTail(Node** head, int data) {
+void insertAtTail(Node** head, int data) { //Node** head 二级指针，因为函数可能需要修改头指针（当链表为空时，头指针会指向新节点）。
 	Node* newNode = createNode(data);
 	if (!newNode) return;
 	if (*head == NULL) {//如果链表为空，直接将新节点作为头节点。
@@ -46,7 +46,7 @@ void freeList(Node** head)
 	Node* temp = *head;
 	while(temp){
 		Node* next = temp->next;//保存下一个节点的地址，因为释放当前节点后，无法再访问它的next指针。
-		free(temp);
+		free(temp);//释放整个链表是负责任的内存管理。
 		temp = next;//释放当前节点后，继续释放下一个节点。
 	}
 	*head = NULL;//防止悬空指针。
