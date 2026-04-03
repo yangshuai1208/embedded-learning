@@ -26,13 +26,13 @@ bool push(Stack* s, int val) {
 //出栈
 bool pop(Stack* s, int* val) {
 	if (isEmpty(s)) return false;
-	*val = s->data[(s->top)--];
+	*val = s->data[(s->top)--];//先取出栈顶元素，再减，移动栈顶指针，将取出的元素通过指针 val 返回给调用者。
 	return true;
 }
 //取栈顶元素
-bool peek(Stack* s, int(*val)){
+bool peek(Stack* s, int*val){
 	if (isEmpty(s)) return false;
-	*val = s->data[s->top];
+	*val = s->data[s->top];//只读取，不移动。
 	return true;
 }
 int main() {
