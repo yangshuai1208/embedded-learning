@@ -6,7 +6,7 @@ typedef struct {
 	int front;//队首
 	int rear;//队尾
 }Queue;
-void initQueue(Queue* q) {
+void initQueue(Queue* q) {  //为什么需要初始化队列:将队列置于一致的初始状态（空队列），避免未定义行为。
 	q->front = 0;//队首队尾都为0，表示队列为空。
 	q->rear = 0;
 }
@@ -18,7 +18,7 @@ bool isFull(Queue* q) {
 }
 //入队操作
 bool enqueue(Queue* q, int val) {
-	if (isFull(q)) return false;
+	if (isFull(q)) return false;//入队与出队参数区别:是否需要返回值。
 	q->data[q->rear++] = val;
 	return true;
 }
@@ -42,3 +42,5 @@ int main() {
 	printf("dequeue:%d\n", val);
 	return 0;
 }
+//缺点:假溢出：当 rear == MAX 时，即使数组前面有空位（因为 front 前移了），也无法再入队，导致空间浪费。
+//队列容量固定为 MAX，不能动态扩展。
